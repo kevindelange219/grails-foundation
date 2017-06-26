@@ -55,6 +55,46 @@ If you do not wish to include everything, you can include parts of the plugin ma
 <asset:javascript src="vendor/motion-ui/dist/motion-ui.min.js"/>
 ```
 
+Instead of including ```<asset:javascript src="vendor/foundation-sites/dist/js/foundation.min.js"/>``` you can also just import the components you need:
+```
+<asset:javascript src="foundation.abide.js"/>
+<asset:javascript src="foundation.core.js"/>
+```
+
+Full list:
+```
+<asset:javascript src="foundation.abide.js"/>
+<asset:javascript src="foundation.accordion.js"/>
+<asset:javascript src="foundation.accordionMenu.js"/>
+<asset:javascript src="foundation.core.js"/>
+<asset:javascript src="foundation.drilldown.js"/>
+<asset:javascript src="foundation.dropdown.js"/>
+<asset:javascript src="foundation.dropdownMenu.js"/>
+<asset:javascript src="foundation.equalizer.js"/>
+<asset:javascript src="foundation.interchange.js"/>
+<asset:javascript src="foundation.foundation.magellan.js"/>
+<asset:javascript src="foundation.foundation.offcanvas.js"/>
+<asset:javascript src="foundation.foundation.orbit.js"/>
+<asset:javascript src="foundation.foundation.responsiveMenu.js"/>
+<asset:javascript src="foundation.foundation.responsiveToggle.js"/>
+<asset:javascript src="foundation.foundation.reveal.js"/>
+<asset:javascript src="foundation.foundation.slider.js"/>
+<asset:javascript src="foundation.foundation.sticky.js"/>
+<asset:javascript src="foundation.foundation.tabs.js"/>
+<asset:javascript src="foundation.foundation.toggler.js"/>
+<asset:javascript src="foundation.foundation.tooltip.js"/>
+<asset:javascript src="foundation.foundation.util.box.js"/>
+<asset:javascript src="foundation.foundation.util.keyboard.js"/>
+<asset:javascript src="foundation.foundation.util.mediaQuery.js"/>
+<asset:javascript src="foundation.foundation.util.motion.js"/>
+<asset:javascript src="foundation.foundation.util.nest.js"/>
+<asset:javascript src="foundation.foundation.util.timerAndImageLoader.js"/>
+<asset:javascript src="foundation.foundation.util.touch.js"/>
+<asset:javascript src="foundation.foundation.util.triggers.js"/>
+<asset:javascript src="foundation.foundation.zf.responsiveAccordionTabs.js"/>
+```
+
+
 If you use the JavaScript components, then ```jQuery``` is required. The dependency ```what-input``` is optional, but recommended for better accessibility.
 You also should initialize the components just before closing the body:
 
@@ -64,25 +104,34 @@ You also should initialize the components just before closing the body:
 </script>
 ```
 
-For more information, see the [Foundation for Sites documentation](http://foundation.zurb.com/sites/docs/javascript.html).
+Additionally, you can also turn off components in the scss files by customizing some of the scss files
 
-## Custom settings
-
-Foundation's default settings can be overridden by customizing the SCSS settings file.
-
-To install this file in your local project, run the script:
+To install these files in your local project, run the script:
 
 ```
-grails foundation-settings
+grails foundation-configurable
 ```
 
-The settings file will be copied to:
+The files will be copied to:
 
 ```
+grails-app/assets/stylesheets/vendor/foundation-sites/assets/foundation.scss
+grails-app/assets/stylesheets/vendor/foundation-sites/scss/foundation.scss
 grails-app/assets/stylesheets/vendor/foundation-sites/scss/settings/_settings.scss
 ```
 
-Modify this file in your local project to customize any settings.
+** In foundation-sites/assets/foundation.scss **
+Here is the mixin executed which loads foundation components. If you run this mixin with a true parameter, foundation will make use of the flexbox grid. like: ```@include foundation-everything(true);``` instead of ```@include foundation-everything;```
+
+** In  stylesheets/vendor/foundation-sites/scss/foundation.scss **
+Here you can set which component needs to be included in the mixin.
+
+** In  stylesheets/vendor/foundation-sites/scss/settings/_settings.scss **
+Here you can adjust foundation settings, by setting a primary and secondary color for instance.
+
+Modify these files in your local project to customize any settings.
+
+For more information, see the [Foundation for Sites documentation](http://foundation.zurb.com/sites/docs/javascript.html).
 
 ## Versioning
 
